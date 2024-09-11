@@ -14,12 +14,14 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import HomeIcon from '@mui/icons-material/Home';
 import EventIcon from '@mui/icons-material/Event';
-import MessageIcon from '@mui/icons-material/Message';
 import SettingsIcon from '@mui/icons-material/Settings';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import HelpIcon from '@mui/icons-material/Help';
 import { DrawerHeader } from './DrawerHeader.tsx';
-import { Link } from 'react-router-dom';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import { Checklist, Group, Inventory } from '@mui/icons-material';
+import { NavLink } from '../UI/NavLink.tsx';
 
 const drawerWidth = 240;
 
@@ -45,10 +47,37 @@ const closedMixin = (theme: Theme): CSSObject => ({
 });
 
 const menuItems = [
-  { text: 'Home', path: '/', icon: <HomeIcon /> },
+  {
+    type: 'presentation',
+    component: <Typography
+      variant="subtitle2"
+      marginLeft={2}
+    >OVERVIEW</Typography>,
+    whenOpenOnly: true,
+  },
+  { text: 'Dashboard', path: '/', icon: <HomeIcon /> },
   { text: 'Activities', path: '/activities', icon: <EventIcon /> },
-  { text: 'Messages', path: '/messages', icon: <MessageIcon /> },
-  { type: 'divider' }, // Use a divider to separate sections
+  { type: 'presentation', component: <Divider sx={{ marginBottom: 1 }} /> },
+  {
+    type: 'presentation',
+    component: <Typography
+      variant="subtitle2"
+      marginLeft={2}
+    >MANAGEMENT</Typography>,
+    whenOpenOnly: true,
+  },
+  { text: 'Products', path: '/products', icon: <Inventory /> },
+  { text: 'Orders', path: '/orders', icon: <Checklist /> },
+  { text: 'Users', path: '/users', icon: <Group /> },
+  { type: 'presentation', component: <Divider sx={{ marginBottom: 1 }} /> },
+  {
+    type: 'presentation',
+    component: <Typography
+      variant="subtitle2"
+      marginLeft={2}
+    >OTHERS</Typography>,
+    whenOpenOnly: true,
+  },
   { text: 'Settings', path: '/settings', icon: <SettingsIcon /> },
   { text: 'Notifications', path: '/notifications', icon: <NotificationsIcon /> },
   { text: 'Help', path: '/help', icon: <HelpIcon /> },
@@ -100,15 +129,22 @@ export const SidebarMenu: React.FC<Props> = ({ open, handleDrawerClose }) => {
       <Divider />
       <List>
         {menuItems.map((item, index) =>
-          item.type === 'divider' ? (
-            <Divider key={index} />
+          item.type === 'presentation' ? (
+            <Box
+              key={index}
+              sx={{
+                ...(item?.whenOpenOnly && !open && { display: 'none' }),
+              }}
+            >
+              {item.component}
+            </Box>
           ) : (
             <ListItem
               key={item.text}
               disablePadding
               sx={{ display: 'block' }}
-              component={Link}
-              to={item.path}
+              component={NavLink}
+              to={item.path ?? '/'}
             >
               <ListItemButton
                 sx={[
@@ -145,7 +181,7 @@ export const SidebarMenu: React.FC<Props> = ({ open, handleDrawerClose }) => {
                 <ListItemText
                   primary={item.text}
                   sx={[
-                    { color: 'black' },
+                    { color: 'text.primary' },
                     open
                       ? {
                         opacity: 1,
@@ -157,7 +193,7 @@ export const SidebarMenu: React.FC<Props> = ({ open, handleDrawerClose }) => {
                 />
               </ListItemButton>
             </ListItem>
-          )
+          ),
         )}
       </List>
     </Drawer>

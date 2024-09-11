@@ -5,3 +5,11 @@
 body {
   margin: 0;
 }
+
+.activeLink--dark {
+  background-color: #495057;
+}
+
+.activeLink--light {
+  background-color: #E0E0E0;
+}

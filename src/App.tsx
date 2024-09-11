@@ -1,12 +1,12 @@
 import { Outlet } from 'react-router-dom';
-import { SidebarMenu } from './components/sidebarMenu/SidebarMenu.tsx';
+import { SidebarMenu } from './components/SidebarMenu/SidebarMenu.tsx';
 import './App.css';
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
-import { Header } from './components/header/Header.tsx';
-import { DrawerHeader } from './components/sidebarMenu/DrawerHeader.tsx';
-import { Container } from '@mui/material';
+import { Header } from './components/Header/Header.tsx';
+import { DrawerHeader } from './components/SidebarMenu/DrawerHeader.tsx';
+
 
 function App() {
   const [open, setOpen] = React.useState(false);
@@ -34,15 +34,14 @@ function App() {
       />
 
 
-      <Container
+      <Box
         component="main"
-        sx={{  p: 3 }}
-        maxWidth="xl"
+        sx={{ p: 3, m: 0, flexGrow: 100 }}
       >
         <DrawerHeader />
 
         <Outlet />
-      </Container>
+      </Box>
     </Box>
   );
 }

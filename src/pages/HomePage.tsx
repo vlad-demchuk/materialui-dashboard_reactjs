@@ -1,7 +1,18 @@
-import { TourList } from '../components/tour/TourList.tsx';
+import Typography from '@mui/material/Typography';
+import { TopCards } from '../components/Dashboard/TopCards.tsx';
 
 export const HomePage = () => {
   return (
-    <><TourList /></>
+    <>
+      <Typography
+        variant="h3"
+        component="h2"
+        marginBottom={2}
+      >
+        Dashboard
+      </Typography>
+
+      <TopCards />
+    </>
   );
 };
