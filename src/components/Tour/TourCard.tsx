@@ -11,7 +11,7 @@ interface Props {
   tour: Tour,
 }
 
-export const TourCard: React.FC<Props> = ({ tour }) => {
+export const TourCard = ({ tour }: Props) => {
   return (
     <Grid
       item

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Modal } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -20,7 +19,7 @@ interface Props {
   onClose: () => void
 }
 
-export const BookModal: React.FC<Props> = ({ isOpen, onClose }) => {
+export const BookModal = ({ isOpen, onClose }: Props) => {
   return (
     <Modal
       open={isOpen}

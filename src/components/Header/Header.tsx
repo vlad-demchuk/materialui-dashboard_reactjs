@@ -4,9 +4,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
 import { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar/AppBar';
-import { styled, alpha } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import MuiAppBar from '@mui/material/AppBar';
-import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import Box from '@mui/material/Box';
 import Badge from '@mui/material/Badge';
@@ -14,6 +13,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { AccountCircle, More } from '@mui/icons-material';
 import { Menu, MenuItem } from '@mui/material';
+import { SearchIconWrapper, StyledInputBase, StyledSearch } from './StyledSearch.tsx';
 
 const drawerWidth = 240;
 
@@ -44,52 +44,12 @@ const AppBar = styled(MuiAppBar, {
   ],
 }));
 
-const Search = styled('div')(({ theme }) => ({
-  position: 'relative',
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  '&:hover': {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginRight: theme.spacing(2),
-  marginLeft: 0,
-  width: '100%',
-  [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(3),
-    width: 'auto',
-  },
-}));
-
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: 'inherit',
-  '& .MuiInputBase-input': {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: '20ch',
-    },
-  },
-}));
-
 interface Props {
   open: boolean,
   handleDrawerOpen: () => void,
 }
 
-export const Header: React.FC<Props> = ({ open, handleDrawerOpen }) => {
+export const Header = ({ open, handleDrawerOpen }: Props) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
     React.useState<null | HTMLElement>(null);
@@ -227,7 +187,7 @@ export const Header: React.FC<Props> = ({ open, handleDrawerOpen }) => {
           >
             MUI
           </Typography>
-          <Search>
+          <StyledSearch>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
@@ -235,7 +195,7 @@ export const Header: React.FC<Props> = ({ open, handleDrawerOpen }) => {
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
             />
-          </Search>
+          </StyledSearch>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton

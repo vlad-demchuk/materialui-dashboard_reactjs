@@ -68,12 +68,15 @@ const topCardsData = [
 
 export const TopCards = () => {
   return (
-    <Box component="section">
+    <Box component="section" marginBottom={3}>
       <Grid
         container
         spacing={2}
       >
-        {topCardsData.map((data) => <TopCard key={data.id} data={data} />)}
+        <TopCard data={topCardsData[0]} />
+        <TopCard data={topCardsData[1]} />
+        <TopCard data={topCardsData[2]} />
+        <TopCard data={topCardsData[3]} />
       </Grid>
     </Box>
   );

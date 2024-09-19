@@ -11,7 +11,6 @@ interface NavLinkProps extends Omit<NavLinkBaseProps, 'className'> {
 export const NavLink = React.forwardRef<HTMLAnchorElement, NavLinkProps>(
   ({ ...props }, ref: ForwardedRef<HTMLAnchorElement>) => {
     const { palette: { mode } } = useTheme();
-    console.log('!!! mode:', mode);
     return <NavLinkBase
       ref={ref}
       {...props}

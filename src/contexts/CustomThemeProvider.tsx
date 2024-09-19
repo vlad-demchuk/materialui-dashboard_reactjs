@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, ReactNode, useMemo } from 'react';
+import { createContext, useState, useEffect, ReactNode, useMemo } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useMediaQuery } from '@mui/material';
 import { PaletteMode } from '@mui/material';
@@ -16,7 +16,7 @@ interface CustomThemeProviderProps {
   children: ReactNode;
 }
 
-const CustomThemeProvider: React.FC<CustomThemeProviderProps> = ({ children }) => {
+const CustomThemeProvider = ({ children }: CustomThemeProviderProps) => {
   const matches = useMediaQuery('(prefers-color-scheme: dark)');
   const systemMode = matches ? 'dark' : 'light';
 

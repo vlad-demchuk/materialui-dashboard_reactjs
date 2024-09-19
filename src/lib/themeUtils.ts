@@ -1,4 +1,5 @@
 import { PaletteMode } from '@mui/material';
+import { grey } from '@mui/material/colors';
 
 declare module '@mui/material/styles' {
   interface TypographyVariants {
@@ -20,28 +21,28 @@ declare module '@mui/material/Typography' {
 // Define your new color palettes
 const lightPalette = {
   primary: {
-    main: '#9c27b0', // Bright Blue
+    main: grey[900],
   },
   secondary: {
-    main: '#ba68c8', // Gray
+    main: grey[800],
   },
   background: {
-    default: '#F8F9FA', // Light Gray
-    paper: '#FFFFFF', // White
+    default: grey[100],
+    paper: grey[50],
   },
   text: {
-    primary: '#212529', // Near Black
-    secondary: '#495057', // Dark Gray
+    primary: grey[900],
+    secondary: grey[800],
   },
-  divider: '#DEE2E6', // Light Gray
+  divider: grey[200],
 };
 
 const darkPalette = {
   primary: {
-    main: '#00ACC1', // Cyan
+    main: '#00ACC1',
   },
   secondary: {
-    main: '#B0BEC5', // Light Blue Gray
+    main: '#B0BEC5',
   },
   background: {
     default: '#121212', // Very Dark Gray

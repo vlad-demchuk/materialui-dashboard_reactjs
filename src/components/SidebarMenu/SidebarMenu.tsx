@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { CSSObject, styled, Theme, useTheme } from '@mui/material/styles';
 import MuiDrawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
@@ -113,7 +112,7 @@ interface Props {
   handleDrawerClose: () => void
 }
 
-export const SidebarMenu: React.FC<Props> = ({ open, handleDrawerClose }) => {
+export const SidebarMenu = ({ open, handleDrawerClose }: Props) => {
   const theme = useTheme();
 
   return (

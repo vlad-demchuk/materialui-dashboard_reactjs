@@ -15,7 +15,7 @@ interface Props {
   data: TopCardData
 }
 
-export const TopCard: React.FC<Props> = ({ data }) => {
+export const TopCard = ({ data }: Props) => {
   return (
     <Grid
       xs={12}
